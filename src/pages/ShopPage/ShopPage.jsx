@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import ShopData from '../../data/ShopData'
 import PreviewCategory from '../../components/PreviewCategory/PreviewCategory';
 
+import './ShopPage.scss'
+
 class ShopPage extends Component {
     state = {  
         categories: []
@@ -19,7 +21,7 @@ class ShopPage extends Component {
         const {categories} = this.state
         return (  
 
-          <div className="shop-page">
+          <div className="shop">
                 {
                     categories.map( ({ id, ...otherProps}) => (
                         <PreviewCategory
