@@ -1,4 +1,4 @@
-.menu-item {
+.list-item {
     min-width: 30%;
     height: 240px;
     flex: 1 1 auto;
@@ -20,6 +20,7 @@
 
     &.large {
       height: 380px;
+      width: 35%;
     }
     
     &:hover {
