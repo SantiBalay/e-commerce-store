@@ -7,6 +7,8 @@ import SignIn from './pages/SignInPage/SignInPage';
 
 import { auth } from './firebase/firebase.utils'
 
+import {createUserProfile} from './firebase/firebase.utils'
+
 import { Route, Switch } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar';
 
@@ -16,16 +18,29 @@ class App extends Component {
     super()
 
     this.state = {
-      currentUser: ''
+      currentUser: null
     }
   }
 
-  unSubscribeFromAuth = ''
+  unSubscribeFromAuth = null
 
-  componentDidMount() { 
-    auth.onAuthStateChanged(user => { // firebase escucha si que hubo un cambio en el state del user, (subscriber)
-      this.setState({ currentUser:user })
-    })
+  componentDidMount() { // te odio firebase.
+    this.unSubscribeFromAuth = auth.onAuthStateChanged( async user => {
+      if(user) {
+        const userRef = await createUserProfile(user)
+
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id:snapShot.id,
+              ...snapShot.data()
+            }
+          })
+        })
+      } else {
+        this.setState( {currentUser : user})
+      }
+    }) 
   }
 
   componentWillUnmount() { 

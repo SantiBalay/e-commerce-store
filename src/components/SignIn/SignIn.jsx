@@ -4,7 +4,7 @@ import FormInput from '../FormInput/FormInput';
 import './SignIn.scss'
 import FormButton from '../FormButton/FormButton';
 
-import { signInWithGoogle } from '../../firebase/firebase.utils'
+import { signInWithGoogle, auth } from '../../firebase/firebase.utils'
 
 
 class SignIn extends Component {
@@ -14,13 +14,17 @@ class SignIn extends Component {
         password : ''
     }
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault()
 
-        this.setState({
-            email : '',
-            password : ''
-        })
+        const {email, password} = this.state
+
+        try {
+            await auth.signInWithEmailAndPassword(email,password)
+            this.setState({email:'',password:''})
+        } catch(error) {
+            console.error(error)
+        }
     }
 
     handleChange = e => {
@@ -35,10 +39,10 @@ class SignIn extends Component {
 
         return (  
             <div className="sign-in">
-                <h2> I have an account</h2>
+                <h2 className="title"> I have an account</h2>
                 <span> Sign in with your email and password </span>
 
-                <form onSubmit={this.handleSubmit}>
+                <form className='form' onSubmit={this.handleSubmit}>
                     <FormInput
                         type="email" name="email" value={this.state.email} required onChange={this.handleChange} label="Email"
                     />

@@ -14,7 +14,9 @@ const PreviewCategory = ({title,items}) => {
                         key={id}
                         {...otherProps}
                     />
-                ))}
+                    
+                )
+                )}
             </div>
         </div>
     );
