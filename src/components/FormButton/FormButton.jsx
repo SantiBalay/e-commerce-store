@@ -2,9 +2,9 @@ import React from 'react';
 
 import './FormButton.scss'
 
-const FormButton = ({valor, ...otherProps}) => {
+const FormButton = ({valor, isGoogleSignIn, ...otherProps}) => {
     return (
-        <button className='form-button' {...otherProps}>
+        <button className={`form-button ${isGoogleSignIn ? 'google' : ''}`} {...otherProps}>
             {valor}
         </button>
     );

@@ -4,6 +4,8 @@ import FormInput from '../FormInput/FormInput';
 import './SignIn.scss'
 import FormButton from '../FormButton/FormButton';
 
+import { signInWithGoogle } from '../../firebase/firebase.utils'
+
 
 class SignIn extends Component {
     
@@ -44,9 +46,18 @@ class SignIn extends Component {
                     <FormInput
                         type="password" name="password" value={this.state.password} required onChange={this.handleChange} label="Password"
                     />
-                    <FormButton
-                        type="submit" value="Submit" valor="Sign In"
-                    />
+
+                    <div className="buttons">
+                        <FormButton
+                            type="submit" value="Submit" valor="Sign In"
+                        />
+
+                        <FormButton
+                            isGoogleSignIn={true} onClick={signInWithGoogle} type="submit" value="Submit" valor="Sign in with Google"
+                        />
+                    </div>
+                    
+                  
                 </form>
 
             </div>

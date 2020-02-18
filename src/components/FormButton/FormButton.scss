@@ -13,11 +13,26 @@
     font-weight: bolder;
     border: none;
     cursor: pointer;
+
+
   
     &:hover {
       background-color: white;
       color: black;
       border: 1px solid black;
     }
+
+    &.google {
+      background-color: #DAA520;
+
+      &:hover {
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+      }
+  
+    }
   }
+
+
   
