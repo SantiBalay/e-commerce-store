@@ -2,8 +2,9 @@
     width: 22%;
     display: flex;
     flex-direction: column;
-    height: 350px;
+    height: 400px;
     align-items: center;
+    border: 1px solid black;
   
     .img {
       width: 100%;
@@ -15,12 +16,13 @@
   
     .preview-info {
       width: 100%;
-      height: 5%;
+      height: 7%;
       display: flex;
       justify-content: space-between;
       font-size: 18px;
   
       .name {
+        margin-left: 10px;
         width: 90%;
         margin-bottom: 15px;
       }

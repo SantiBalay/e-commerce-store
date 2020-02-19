@@ -33,7 +33,7 @@ export const createUserProfile = async (user, masData) => { //agrego a bd, dios 
                 ...masData
             })
         } catch(error) {
-            console.log('Epa,', error.message)
+            console.log('Error,', error.message)
         }
     } else {
     }
@@ -49,6 +49,7 @@ export const firestore = firebase.firestore()
 const provider = new firebase.auth.GoogleAuthProvider()
 
 provider.setCustomParameters({prompt:'select_account'})
+
 export const signInWithGoogle = () => auth.signInWithPopup(provider)
 
 export default firebase

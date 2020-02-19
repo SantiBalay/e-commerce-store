@@ -25,8 +25,10 @@ class ShopPage extends Component {
           <div className="shop">
                 {
                     categories.map( ({ id, ...otherProps}) => (
-                       <Fragment>
-                       
+                       <Fragment
+                       key={id}
+                       >
+                        
                         <PreviewCategory
                             key = {id}
                             {...otherProps}
