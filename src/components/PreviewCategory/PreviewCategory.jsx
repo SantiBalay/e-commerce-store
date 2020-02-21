@@ -9,10 +9,10 @@ const PreviewCategory = ({title,items}) => {
         <div className='preview-category'>
             <h1 className='title'> {title.toUpperCase()} </h1>
             <div className='preview'>
-                {items.filter( item => item.id < 5 ).map( ({id,...otherProps}) => (
+                {items.filter( item => item.id < 5 ).map( (item) => (
                     <PreviewItem
-                        key={id}
-                        {...otherProps}
+                        key={item.id}
+                        item={item}
                     />
                     
                 )

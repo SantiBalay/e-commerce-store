@@ -1,8 +1,14 @@
 import React from 'react';
 
 import './PreviewItem.scss'
+import FormButton from '../FormButton/FormButton';
 
-const PreviewItem = ({id,name,price,imageUrl}) => {
+import { connect } from 'react-redux'
+
+import { addItem } from '../../redux/cart/cartActions'
+
+const PreviewItem = ({item,addItem}) => {
+    const { name,price,imageUrl} = item
     return (
         <div className="preview-item">
             <div className='img'
@@ -14,10 +20,18 @@ const PreviewItem = ({id,name,price,imageUrl}) => {
             <div className="preview-info">
                 <span className='name'> {name} </span>
                 <span className='price'> ${price} </span>
-
             </div>
+
+            <FormButton onClick={ () => addItem(item) }
+                isAddToCart={true} type="submit" value="Submit" valor="ADD TO CART"
+            />
+
         </div>
     );
 };
 
-export default PreviewItem;
+const mapDispatchToProps = dispatch => ({
+    addItem : (item) => dispatch(addItem(item))
+})
+
+export default connect(null,mapDispatchToProps) (PreviewItem);
