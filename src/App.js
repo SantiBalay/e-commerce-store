@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { auth } from './firebase/firebase.utils'
 import { createUserProfile } from './firebase/firebase.utils'
 
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 
@@ -56,7 +56,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={HomePage}/>
               <Route path='/shop' component={ShopPage}/>
-              <Route path='/signin' component={SignIn}/>
+              <Route exact path='/signin' render={ () => this.props.currentUser ? (<Redirect to='/'/>) : (<SignIn/>)}/>
             </Switch>
 
           </div>
@@ -64,10 +64,14 @@ class App extends Component {
     }
 }
 
+const mapStateToProps = ({user}) => ({ // destructuro user del state que es el reducer
+  currentUser: user.currentUser
+})
+
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 
-export default connect(null,mapDispatchToProps) (App);
+export default connect(mapStateToProps,mapDispatchToProps) (App);
 
 

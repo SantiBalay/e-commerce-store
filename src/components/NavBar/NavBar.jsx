@@ -8,8 +8,10 @@ import { connect } from 'react-redux'
 import { ReactComponent as HomeLogo} from '../../data/home.svg'
 
 import './NavBar.scss'
+import Cart from '../Cart/Cart';
+import CartDropdown from '../CartDropdown/CartDropdown';
 
-const NavBar = ({currentUser}) => {
+const NavBar = ({currentUser, isHidden}) => {
     return (
         <div className="nav">
             <Link className='home-container' to='/'> 
@@ -26,13 +28,23 @@ const NavBar = ({currentUser}) => {
                 <Link className="option" to="/signin"> SIGN IN </Link>
                 }
 
+                <Cart/>
+
             </div>
+            {
+                !isHidden ? (
+                    <CartDropdown/>
+                ) : null
+            }
+           
+
         </div>
     );
 };
 
-const mapStateToProps = (state) /*current state*/ => ({
-    currentUser: state.user.currentUser
+const mapStateToProps = ({user: { currentUser }, cart: { isHidden }}) => ({
+    currentUser,
+    isHidden 
 })
 
 export default connect(mapStateToProps) (NavBar);
