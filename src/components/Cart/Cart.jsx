@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './Cart.scss'
 
@@ -8,11 +8,11 @@ import { toggleHidden } from '../../redux/cart/cartActions'
 
 import { ReactComponent as CartIcon} from '../../data/shoping-bag.svg'
 
-const Cart = ({toggleHidden})  => {
+const Cart = ({toggleHidden,itemCount})  => {
     return (
         <div className="cart" onClick={toggleHidden}>
         <CartIcon className="icon"/>
-        <span className="item-count"> 0 </span>
+        <span className="item-count"> {itemCount} </span>
     </div>
     )
 }
@@ -21,4 +21,9 @@ const mapDispatchToProps = dispatch =>  ({
     toggleHidden: () => dispatch(toggleHidden())
 })
 
-export default connect(null,mapDispatchToProps) (Cart)
+const mapStateToProps = ({ cart: {cartItems}}) => ({
+    itemCount: cartItems.reduce( ( acumulated , cartItem ) => acumulated += cartItem.quantity , 0)
+})
+
+
+export default connect(mapStateToProps,mapDispatchToProps) (Cart)

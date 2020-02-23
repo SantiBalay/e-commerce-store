@@ -33,10 +33,10 @@ class SignIn extends Component {
         this.setState({ [name]: value})
     }
 
+    /* Le voy a poner names a los inputs y actualizar dinamicamente el state porque me parece mas elegante que usar refs :) */
     
     render() { 
-        {/* Le voy a poner names a los inputs y actualizar dinamicamente el state porque me parece mas elegante que usar refs :) */}
-
+        
         return (  
             <div className="sign-in">
                 <h2 className="title"> I have an account</h2>
@@ -55,7 +55,6 @@ class SignIn extends Component {
                         <FormButton
                             type="submit" value="Submit" valor="Sign In"
                         />
-
                         <FormButton
                             isGoogleSignIn={true} onClick={signInWithGoogle} type="submit" value="Submit" valor="Sign in with Google"
                         />
