@@ -5,7 +5,7 @@ import './CartItem.scss'
 const CartItem = ({item: {imageUrl,price,name, quantity}}) => {
     return (
         <div className="cartItem">
-            <img src={imageUrl}/>
+            <img alt='item' src={imageUrl}/>
 
             <div className="itemDetails">
                 <span className="name"> {name} </span>
