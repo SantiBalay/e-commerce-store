@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { connect } from 'react-redux'
 
@@ -7,6 +7,7 @@ import { createStructuredSelector } from 'reselect'
 
 import './CheckoutPage.scss'
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
+import Stripe from '../../components/Stripe/Stripe';
 
 const CheckoutPage = ({cartPrice,cartItems}) => {
     return (
@@ -42,9 +43,33 @@ const CheckoutPage = ({cartPrice,cartItems}) => {
                 ))
             }
 
-            <div className="total">
-                TOTAL: ${cartPrice}
-            </div>
+            {(cartItems.length) ? (
+                <Fragment>
+                    <div className="total">
+                    TOTAL: ${cartPrice}
+                    </div>
+
+                    <div className="test">
+                    *Porfavor utiliza la siguiente tarjeta de credito para pruebas de pago*
+                    <br/>
+                    *Please use the following credit card for test payments*
+                    <br/>
+                    4242 4242 4242 4242 - Expiration: 01/21 - CVV: 123
+                    </div>
+
+                    <Stripe
+                    price={cartPrice}
+                    />
+                </Fragment>
+            ): 
+            ( <div className="cart-empty">
+                The cart is empty
+              </div> )
+        
+            }
+
+           
+
         </div>
     );
 };

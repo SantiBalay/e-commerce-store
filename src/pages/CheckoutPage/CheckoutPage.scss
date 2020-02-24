@@ -12,7 +12,7 @@
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid darkgrey;     
-      font-size: 25px;
+      font-size: 27px;
 
   
       .block {
@@ -31,6 +31,28 @@
       margin-top: 30px;
       margin-left: auto;
       font-size: 36px;
+    }
+
+    .test {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 24px;
+      color: red;
+      margin-bottom: 40px;
+    }
+
+    .cart-empty {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 22px;
+      color: black;
+      margin-bottom: 40px;
+      margin-right: 1%;
+    }
+
+    button {
+      margin-left: auto;
+      margin-top: 50px;
     }
 }
   
