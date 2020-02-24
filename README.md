@@ -15,5 +15,8 @@ La idea del projecto fue hacer una aplicacion en mayor escala que los mini-proje
 * Firebase (User authentication solamente por ahora)
 * SASS
 * Stripe
+* ContextAPI
 
 Entre otras
+
+_Pienso agregar, en el futuro, alguna DB (probablemente Apollo), Hooks y ampliar sobre FireBase y Stripe para procesar pagos completamente_
