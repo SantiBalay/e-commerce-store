@@ -14,14 +14,12 @@ const PreviewCategory = ({title,items}) => {
         <div className='preview-category'>
             <h1 className='title'> {title.toUpperCase()} </h1>
             <div className='preview'>
-                {items.filter( item => item.id < firstItemId + 4).map( (item) => (
+                { items.filter( item => item.id < firstItemId + 4).map( (item) => (
                     <PreviewItem
                         key={item.id}
                         item={item}
                     />
-                    
-                )
-                )}
+                ))}
             </div>
         </div>
     );

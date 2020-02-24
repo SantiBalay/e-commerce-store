@@ -1,50 +1,20 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 
-import ShopData from '../../data/ShopData'
-import PreviewCategory from '../../components/PreviewCategory/PreviewCategory';
+import { Route } from 'react-router-dom'
 
 import './ShopPage.scss'
-import Divider from '../../components/Divider/Divider';
 
-class ShopPage extends Component {
-    state = {  
-        categories: []
-    }
+import ShopPreview from '../../components/ShopPreview/ShopPreview';
+import CategoryPage from '../CategoryPage/CategoryPage';
 
-    componentDidMount() {
-        this.setState({
-            categories : ShopData
-        })
-    }
-
-    render() { 
-
-        const {categories} = this.state
-        return (  
-
-          <div className="shop">
-                {
-                    categories.map( ({ id, ...otherProps}) => (
-                       <Fragment
-                       key={id}
-                       >
-                        
-                        <PreviewCategory
-                            key = {id}
-                            {...otherProps}
-                        />
-
-                        <Divider/>
-
-
-                    </Fragment>
-                    )
-
-                    
-            )}
+const ShopPage = ({match}) => {
+//tengo acceso a match porque este componente lo renderiza un route en app.js, asique lo uso directamente desde props. Osea /shop es el preview y los routes lo nesteo abajo
+        return (
+          <div className="shop"> 
+                <Route exact path={`${match.path}`} component={ShopPreview}/> 
+                <Route path={`${match.path}/:category`} component={CategoryPage}/>
           </div>
         )
     }
-}
- 
+
 export default ShopPage;

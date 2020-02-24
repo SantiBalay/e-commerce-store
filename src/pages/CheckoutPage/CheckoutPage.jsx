@@ -36,6 +36,7 @@ const CheckoutPage = ({cartPrice,cartItems}) => {
 
             {   cartItems.map( cartItem => (
                     <CheckoutItem
+                        key={cartItem.id}
                         item={cartItem}
                     />
                 ))

@@ -28,7 +28,7 @@ const CartDropdown = ({cartItems, history, toggleHidden}) => {
             </div>) : (<div className='isEmpty'> The cart is empty </div>) }
 
             <FormButton onClick={() => {
-                history.push('./checkout');
+                history.push('/checkout');
                 toggleHidden();
             }} valor={'GO TO CHECKOUT'}/>
         </div>

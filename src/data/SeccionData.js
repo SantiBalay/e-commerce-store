@@ -1,13 +1,13 @@
 const SeccionData = [
     {
-      title: 'womens',
+      title: `women's`,
       imageUrl: '/img/woman.jpg',
       size: 'large',
       id: 4,
       linkUrl: 'shop/womens'
     },
     {
-      title: 'mens',
+      title: `men's`,
       imageUrl: '/img/man.jpg',
       size: 'large',
       id: 5,

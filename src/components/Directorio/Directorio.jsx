@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 
 import './Directorio.scss'
 
-import MenuItem from '../Menu-Item/MenuItem';
+import MenuItem from '../MenuItem/MenuItem';
 
-import SeccionData from '../../data/SeccionData'
+import {connect} from 'react-redux'
+import {selectDirectorySection} from '../../redux/directorio/directorioSelector'
+import {createStructuredSelector} from 'reselect'
 
 class Directorio extends Component {
-    
-    state = { 
-        sections : SeccionData
-     }
    
     render() { 
         return (
             <div className="list-menu">
-                {this.state.sections.map( ({id,...otherProps}) => (
+                {this.props.sectionData.map( ({id,...otherProps}) => (
                     <MenuItem
                         key = {id} 
                         {...otherProps}
@@ -26,4 +24,8 @@ class Directorio extends Component {
     }
 }
  
-export default Directorio;
+const mapStateToProps = createStructuredSelector({
+    sectionData : selectDirectorySection
+})
+
+export default connect(mapStateToProps)(Directorio);

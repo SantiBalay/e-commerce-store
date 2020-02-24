@@ -6,6 +6,9 @@ import storage from 'redux-persist/lib/storage' //localstorage
 
 import userReducer from './user/userReducer'
 import cartReducer from './cart/cartReducer'
+import directorioReducer from './directorio/directorioReducer'
+import shopReducer from './shop/shopReducer'
+
 
 const persistConfig = {
     key: 'root',
@@ -15,7 +18,9 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     user: userReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    directorio: directorioReducer,
+    shop: shopReducer
 })
 
 export default persistReducer(persistConfig, rootReducer) //basicamente una version modificada del reducer con el config de la libreria. Orden superior
