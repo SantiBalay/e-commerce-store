@@ -7,7 +7,6 @@ import { createStructuredSelector } from 'reselect'
 
 import './CheckoutPage.scss'
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
-import CartItem from '../../components/CartItem/CartItem';
 
 const CheckoutPage = ({cartPrice,cartItems}) => {
     return (
@@ -53,5 +52,6 @@ const mapStateToProps = createStructuredSelector({
     cartItems : selectCartItems,
     cartPrice : selectCartPrice
 })
+
 
 export default connect(mapStateToProps,null)(CheckoutPage);
