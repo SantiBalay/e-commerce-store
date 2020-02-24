@@ -13,3 +13,13 @@ export const selectCartItemsNumber = createSelector( // aca en vez de un input s
     [selectCartItems],
     cartItems => cartItems.reduce( ( acumulated , cartItem ) => acumulated += cartItem.quantity , 0)
 )
+
+export const selectCartIsHidden = createSelector(
+    [selectCart],
+    cart => cart.isHidden
+)
+
+export const selectCartPrice = createSelector(
+    [selectCartItems],
+    cartItems => cartItems.reduce( ( acumulated , cartItem ) => acumulated += cartItem.quantity*cartItem.price , 0)
+)

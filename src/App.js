@@ -9,13 +9,17 @@ import { connect } from 'react-redux'
 
 import './App.css';
 
+
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
 import HomePage from './pages/HomePage/HomePage';
 import ShopPage from './pages/ShopPage/ShopPage';
 import SignIn from './pages/SignInPage/SignInPage';
+
 import NavBar from './components/NavBar/NavBar';
 
 import { setCurrentUser } from './redux/user/userActions'
-
+import { selectCurrentUser } from './redux/user/userSelector'
+import { createStructuredSelector } from 'reselect'
 
 class App extends Component {
 
@@ -48,6 +52,8 @@ class App extends Component {
     this.unsubscribeFromAuth()
   }
 
+  //no le pongo exact a shop porque le voy a agregar categorias
+
   render() {
       return (
           <div>
@@ -55,7 +61,8 @@ class App extends Component {
 
             <Switch>
               <Route exact path='/' component={HomePage}/>
-              <Route path='/shop' component={ShopPage}/>
+              <Route path='/shop' component={ShopPage}/> 
+              <Route exact path='/checkout' component={CheckoutPage}/>
               <Route exact path='/signin' render={ () => this.props.currentUser ? (<Redirect to='/'/>) : (<SignIn/>)}/>
             </Switch>
 
@@ -64,8 +71,8 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = ({user}) => ({ // destructuro user del state que es el reducer
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector ({ // destructuro user del state que es el reducer
+  currentUser: selectCurrentUser
 })
 
 const mapDispatchToProps = dispatch => ({
